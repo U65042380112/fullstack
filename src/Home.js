@@ -39,7 +39,7 @@ function Home() {
                             <td>{d.idworker}</td>
                             <td>{d.fname}</td>
                             <td>{d.lname}</td>
-                            <td>{d.idoffice}</td>
+                            <td>{d.oname}</td>
                             <td>
                                 <Link to={`/update/${d.idworker}`} className='btn btn-sm btn-primary m-1'>แก้ไขข้อมูล</Link>
                                 <button onClick={e => handleDelete(d.idworker)} className='btn btn-sm btn-danger'>ลบข้อมูล</button>
