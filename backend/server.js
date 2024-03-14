@@ -13,7 +13,7 @@ const db = mysql.createConnection({
 })
 
 app.get('/',(req,res)=>{
-    const sql ="SELECT * FROM worker";
+    const sql ="SELECT worker.idworker, worker.fname, worker.lname, office.oname FROM worker INNER JOIN office ON worker.idoffice = office.idoffice;";
     db.query(sql,(err,data)=>{
         if(err) return res.json(err);
         return res.json(data);
@@ -51,6 +51,15 @@ app.put('/update/:idworker',(req,res)=>{
     db.query(sql,[...values, idworker],(err,data)=>{
         if(err) return res.json(err);
         return res.json("แก้ไขสำเร็จ");
+    })
+})
+app.get('/update/:idworker',(req,res)=>{
+    const sql = "SELECT * FROM worker WHERE idworker = ?";
+    const idworker = req.params.idworker;
+
+    db.query(sql,[idworker], (err, data)=>{
+        if(err) return res.json(err);
+        return res.json(data);
     })
 })
 
